@@ -9,7 +9,7 @@ class Item:
             
 
     def isItemTypeValid(self):
-        if self.itemType.upper() != ('FOOD' or 'WEAPON' or 'TOOl' or 'ARMOUR'):
+        if self.itemType.upper() not in ['FOOD', 'WEAPON', 'TOOl', 'ARMOUR']:
             raise invalidItemType
     
 class invalidItemType(Exception):
