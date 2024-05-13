@@ -11,6 +11,6 @@ import item
 
 user = player.Player("meow", 100, 10, 10, False)
 
-steak = item.Item(0, "Steak", "its a steak", "food")
+sushi = item.FOOD(1, "Sushi", "its fish on rice", "food", 10, 10)
+print(sushi.id)
 
-print(steak)
