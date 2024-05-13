@@ -28,7 +28,6 @@ class Item:
     def checkItemInfo(self):
         return f"ID: {self.id}\nName: {self.name}\nDescription: {self.desc}\nItem Type: {self.itemType.upper()}"
 
-
 class FOOD(Item):
     def __init__(self, id: int, name: str, desc: str, itemType: str, saturation: int, healthGain: int = 0):
         super().__init__(id, name, desc, itemType)
@@ -47,9 +46,23 @@ class FOOD(Item):
         return f"{itemInfo}\nSaturation: {self.saturation}\nHealth Gain: {self.healthGain}"
 
 class WEAPON(Item):
-    def __init__(self, id: int, name: str, desc: str, itemType: str):
+    def __init__(self, id: int, name: str, desc: str, itemType: str, attackDMG: int, attackSpeed: int):
         super().__init__(id, name, desc, itemType)
+        self.attackDMG = attackDMG
+        self.attackSpeed = attackSpeed
 
+    def checkItemInfo(self):
+        itemInfo = super().checkItemInfo()
+        return f"{itemInfo}\nAttack Damage: {self.attackDMG}\nAttack Speed: {self.attackSpeed}"
+
+class ARMOUR(Item):
+    def __init__(self, id: int, name: str, desc: str, itemType: str, defense: int):
+        super().__init__(id, name, desc, itemType)
+        self.defense = defense
+    
+    def checkItemInfo(self):
+        itemInfo = super().checkItemInfo()
+        return f"{itemInfo}\nDefense: {self.defense}"
 
 # custom exceptions
 class invalidItemType(Exception):
