@@ -7,7 +7,11 @@ Outcome: A functional inventory system that can be scaled or customized accordin
 """
 
 import player
+import item
 
 user = player.Player("meow", 100, 10, 10, False)
 
-print(user)
+steak = item.Item(0, "Steak", "its a steak", "food")
+meow = item.Item(0, "meow", "meow", "meow")
+
+print(meow)
