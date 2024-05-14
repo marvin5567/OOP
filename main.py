@@ -12,5 +12,5 @@ import item
 user = player.Player("meow", 100, 10, 10, False)
 
 sushi = item.FOOD(1, "Sushi", "its fish on rice", "food", 10, 10)
-print(sushi.id)
+print(sushi.checkItemInfo()) # prints out item info
 

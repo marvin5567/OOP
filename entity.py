@@ -7,7 +7,7 @@ class Entity:
         self.defense = defense
         self.entityType = entityType
         self.hostility = hostility
-        self.drops = drops
+        self.drops = drops # 
         
         if not isinstance(name, str):  
             raise TypeError("Entity Name must be a string value")
@@ -32,6 +32,9 @@ class Entity:
     def entityInfo(self):
         return f"Entity Info\n-----------\nName: {self.name}\nHealth: {self.health}\nDefense: {self.defense}\nEntity Type: {self.entityType}\nHostility: {self.hostility}\nDrops: {self.drops}"
 
+# could hostilies be classes?
+
+# inherited classes
 class NPC(Entity):
     def __init__(self, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
         super().__init__(name, health, defense, entityType, hostility, drops)
