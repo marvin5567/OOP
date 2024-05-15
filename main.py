@@ -15,6 +15,8 @@ sushi = item.FOOD(0, "sushi", "its sushi", "food", 10, 10)
 spoiledSushi = item.FOOD(0, "spoiled sushi", "its sushi", "food", 10, -10)
 print(sushi.id)
 
+
+
 while user.isDead == False:
     print("What would you like to do?\n--------------------------")
     print("\n> Eat food!\n>Eat totally not spoiled food\n>Check Health")

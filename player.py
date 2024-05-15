@@ -1,6 +1,8 @@
+import inventory
 class Player:
     def __init__(self, name: str, maxHealth:int, health: int, maxHunger: int, hunger: int, dmg: int, defense: int, isDead: bool):
         self.name = name
+        self.maxHealth = maxHealth
         self.health = health
         self.dmg = dmg
         self.defense = defense
@@ -14,7 +16,7 @@ class Player:
             self.isDead == True
             print("You died!!!")
             return self.isDead
-    
+
     def healthChange(self, incomingHealthChange):
         if self.maxHealth <= self.health + incomingHealthChange:
             self.health == self.maxHealth
