@@ -1,9 +1,10 @@
 entityTypes = ['NPC', 'Enemy', 'Animal']
 hostilityTypes = ['Peaceful', 'Neutral', 'Hostile', 'Aggressive']
 class Entity:
-    def __init__(self, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
+    def __init__(self, name: str, maxHealth: int, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
         self.name = name
         self.health = health
+        self.maxHealth = maxHealth
         self.defense = defense
         self.entityType = entityType
         self.hostility = hostility
@@ -36,22 +37,22 @@ class Entity:
 
 # inherited classes
 class NPC(Entity):
-    def __init__(self, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
-        super().__init__(name, health, defense, entityType, hostility, drops)
+    def __init__(self, maxHealth: int, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
+        super().__init__(name, maxHealth, health, defense, entityType, hostility, drops)
 
     def entityInfo(self):
         return f"{super().entityInfo()}\nidk man i'll add more attributes later"
     
 class Enemy(Entity):
-    def __init__(self, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
-        super().__init__(name, health, defense, entityType, hostility, drops)
+    def __init__(self, maxHealth: int, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
+        super().__init__(name, maxHealth, health, defense, entityType, hostility, drops)
     
     def entityInfo(self):
         return f"{super().entityInfo()}"
 
 class Animal(Entity):
-    def __init__(self, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
-        super().__init__(name, health, defense, entityType, hostility, drops)
+    def __init__(self, name: str, maxHealth: int, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
+        super().__init__(name, maxHealth, health, defense, entityType, hostility, drops)
     
     def entityInfo(self):
         return f"{super().entityInfo()}"
