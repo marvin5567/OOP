@@ -14,6 +14,7 @@ user = player.Player("joe", 100, 100, 20, 20, 10, 10, False)
 sushi = item.FOOD(0, "sushi", "its sushi", "food", 10, 10)
 spoiledSushi = item.FOOD(0, "spoiled sushi", "its sushi", "food", 10, -10)
 print(sushi.id)
+>>>>>>>>> Temporary merge branch 2
 
 while user.isDead == False:
     print("What would you like to do?\n--------------------------")

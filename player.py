@@ -14,7 +14,7 @@ class Player:
             self.isDead == True
             print("You died!!!")
             return self.isDead
-    
+
     def healthChange(self, incomingHealthChange):
         if self.maxHealth <= self.health + incomingHealthChange:
             self.health == self.maxHealth
