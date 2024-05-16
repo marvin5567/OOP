@@ -1,4 +1,4 @@
-entityTypes = ['NPC', 'Enemy', 'Animal']
+entityTypes = ['NPC', 'ENEMY', 'ANIMAL']
 hostilityTypes = ['Peaceful', 'Neutral', 'Hostile', 'Aggressive']
 class Entity:
     def __init__(self, name: str, maxHealth: int, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
@@ -30,8 +30,27 @@ class Entity:
         if self.hostility.upper() not in hostilityTypes:
             raise invalidHostilityType
 
-    def entityInfo(self):
+    def entityInfo(self): # info function
         return f"Entity Info\n-----------\nName: {self.name}\nHealth: {self.health}\nDefense: {self.defense}\nEntity Type: {self.entityType}\nHostility: {self.hostility}\nDrops: {self.drops}"
+    
+    def healthDisplay(self): # for the sake of simplicity and not having to write it out every time
+        return "{n} HP: {hp}/{mhp}"
+
+    def healthChange(self, incomingHealthChange):
+        if self.maxHealth <= self.health + incomingHealthChange:
+            self.health == self.maxHealth
+            return self.healthDisplay()
+
+        else:
+            currentHealth = self.health
+            self.health += incomingHealthChange
+            if currentHealth > self.health:
+                print(f"Gained {incomingHealthChange} HP!")
+                return self.healthDisplay()
+            
+            if currentHealth < self.health:
+                print(f"Lost {abs(incomingHealthChange)} HP!")
+                return self.healthDisplay()
 
 # could hostilies be classes?
 
@@ -43,6 +62,12 @@ class NPC(Entity):
     def entityInfo(self):
         return f"{super().entityInfo()}\nidk man i'll add more attributes later"
     
+    def healthDisplay(self):
+        return super().healthDisplay().format(n=self.name, hp=self.health, mhp=self.maxHealth)
+
+    def healthChange(self, incomingHealthChange):
+        return super().healthChange(incomingHealthChange).format(name=self.name)
+    
 class Enemy(Entity):
     def __init__(self, maxHealth: int, name: str, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
         super().__init__(name, maxHealth, health, defense, entityType, hostility, drops)
@@ -50,12 +75,24 @@ class Enemy(Entity):
     def entityInfo(self):
         return f"{super().entityInfo()}"
 
+    def healthDisplay(self):
+        return super().healthDisplay().format(n=self.name, hp=self.health, mhp=self.maxHealth)
+
+    def healthChange(self, incomingHealthChange):
+        return super().healthChange(incomingHealthChange)
+
 class Animal(Entity):
     def __init__(self, name: str, maxHealth: int, health: int, defense: int, entityType: str, hostility: str, drops: list = []):
         super().__init__(name, maxHealth, health, defense, entityType, hostility, drops)
     
     def entityInfo(self):
         return f"{super().entityInfo()}"
+    
+    def healthDisplay(self):
+        return super().healthDisplay().format(n=self.name, hp=self.health, mhp=self.maxHealth)
+
+    def healthChange(self, incomingHealthChange):
+        return super().healthChange(incomingHealthChange).format(name=self.name)
 
 # custom exceptions
 class invalidEntityType(Exception):

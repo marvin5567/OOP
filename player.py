@@ -22,10 +22,10 @@ class Player:
         else:
             currentHealth = self.health
             self.health += incomingHealthChange
-            if currentHealth > self.health:
+            if currentHealth < self.health:
                 print(f"Gained {incomingHealthChange} HP!")
                 return self.healthDisplay()
             
-            if currentHealth < self.health:
+            if currentHealth > self.health:
                 print(f"Lost {abs(incomingHealthChange)} HP!")
                 return self.healthDisplay()
