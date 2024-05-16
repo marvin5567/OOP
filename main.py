@@ -8,18 +8,23 @@ Outcome: A functional inventory system that can be scaled or customized accordin
 
 import player
 import item
+import entity
 
-user = player.Player("joe", 100, 100, 20, 20, 10, 10, False)
+# player
+user = player.Player("joe", 100, 100, 20, 20, -10, 10, False)
 
+# foods
 sushi = item.FOOD(0, "sushi", "its sushi", "food", 10, 10)
 spoiledSushi = item.FOOD(0, "spoiled sushi", "its sushi", "food", 10, -10)
-print(sushi.id)
 
+# entities
+jerry = entity.Enemy(50, "Jerry", 50, 10, "Enemy", "hostile")
+mostafa = entity.NPC(50, "Mostafa", 50, 10, "npc", "peaceful")
+duck = entity.Animal("duck", 100, 100, 99, "animal", "agressive")
 
-
-while user.isDead == False:
+while user.health > 0:
     print("What would you like to do?\n--------------------------")
-    print("\n> Eat food!\n>Eat totally not spoiled food\n>Check Health")
+    print("\n>Eat food!\n>Eat totally not spoiled food\n>Check Health")
     choice = input("")
 
     if choice == "ef":
@@ -29,4 +34,26 @@ while user.isDead == False:
         user.healthChange(spoiledSushi.healthGain)
     
     if choice == "ch":
-        print(f"HP: {user.health}/{user.maxHealth}")
+        print(f"\nHP: {user.health}/{user.maxHealth}")
+
+    if user.health <= 0:
+        print("you died ;(")
+        break
+
+    print("\nnow lets attack a bitch\n-----------------------")
+    print(">Jerry\n>Mostafa\n>Duck")
+    choiceTwo = input("")
+
+    if choiceTwo == "j":
+        jerry.healthChange(user.dmg)
+        print(jerry.healthDisplay())
+
+    if choiceTwo == "m":
+        mostafa.healthChange(user.dmg)
+        print(mostafa.healthDisplay())
+
+    if choiceTwo == "d":
+        duck.healthChange(user.dmg)
+        print(duck.healthDisplay())
+        print("meow")
+    
